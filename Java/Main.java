@@ -2,8 +2,8 @@
  class Main{
     public static void main(String[] args) {
 
-        Player _playerOne = new Player("Alpha", 2);
-        Player _playerTwo = new Player("Beta",1);
+        Player _playerOne = new Player("Alpha", 1);
+        Player _playerTwo = new Player("Beta", 2);
 
         Board _board = new Board();
         _board.setBoardValueAtPosition('c', 0);
