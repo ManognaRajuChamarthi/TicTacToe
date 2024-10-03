@@ -39,6 +39,17 @@ public class Board {
         return _board[position-1];
     }
 
+    //Check if board is full
+    public boolean isFull() {
+        for (char c : _board) {
+            if (c == 'c') { 
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //Checking all Winning Conditions
     public boolean checkWin(char symbol) {
         // Check rows, columns, and diagonals for a win
         return (_board[0] == symbol && _board[1] == symbol && _board[2] == symbol) || // Row 1

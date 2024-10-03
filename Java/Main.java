@@ -79,24 +79,38 @@ class Main{
             } while (_isValidInput == false);
 
             //player two input loop
-            System.out.println("where do "+ _playerTwo.getPlayerName()+" Want to place 'O'");
-            do {
-                _playerInput = sc.nextInt();
-                if(_board.getBoardValueAtPosition(_playerInput) == 'O'|| _board.getBoardValueAtPosition(_playerInput) == 'X'){
-                    System.out.println("this Position is not valid pick another one");
-                }else{
-                    _playerTwo.addtoPlayerMarkedPositionArray(_playerInput);
+            if(!_board.isFull()){
+                System.out.println("where do "+ _playerTwo.getPlayerName()+" Want to place 'O'");
+                do {
+                    _playerInput = sc.nextInt();
+                    if(_board.getBoardValueAtPosition(_playerInput) == 'O'|| _board.getBoardValueAtPosition(_playerInput) == 'X'){
+                        System.out.println("this Position is not valid pick another one");
+                    }else{
+                        _playerTwo.addtoPlayerMarkedPositionArray(_playerInput);
 
-                    _board.setBoardValueAtPosition(_playerInput,_playerTwo);
+                        _board.setBoardValueAtPosition(_playerInput,_playerTwo);
 
-                    _board.displayBoard();
-                    
-                    _isValidInput = false;
-                } 
-            } while (_isValidInput == true);
-            
+                        _board.displayBoard();
+                        
+                        _isValidInput = false;
+                    } 
+                } while (_isValidInput == true);
+            }
 
-        } while (!_board.checkWin('X') && !_board.checkWin('O'));
+
+        } while (!_board.checkWin('X') && !_board.checkWin('O') && !_board.isFull());
+
+
+        //Winning Declaration
+        if(_board.checkWin('X')){
+            System.out.println("Player " + _playerOne.getPlayerName() + " Wins.");
+        }
+        if(_board.checkWin('O')){
+            System.out.println("Player " + _playerTwo.getPlayerName() + " Wins.");
+        }
+        if(_board.isFull()){
+            System.out.println("Both of you turned ot to be idiots. Want to prove me wrong Why no Play AGAIN?  ");
+        }
 
         sc.close();
     }
