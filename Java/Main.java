@@ -11,6 +11,8 @@ class Main{
         //variables
         String _pOneName;
         String _pTwoName;
+        int _playerInput;
+        boolean _isValidInput = false;
 
         //player details
         System.out.println("Input Player one name: ");
@@ -30,8 +32,13 @@ class Main{
         Board _board = new Board();
 
         //Game Introduction
+        System.out.println("Hello, Welcome to a Game of TIC TAC TOE." );
+        _playerOne.getPlayerDetails();
+        _playerTwo.getPlayerDetails();
+        System.out.println("Player 1 gets to move first and use the symbol : 'X'. Now, let's Start the Game.\nThe symbol C is used to let the player know that these places on the board are empty." );
 
 
+        //board Initialization
         _board.setBoardValueAtPosition('c', 0);
         _board.setBoardValueAtPosition('c', 1);
         _board.setBoardValueAtPosition('c', 2);
@@ -41,13 +48,55 @@ class Main{
         _board.setBoardValueAtPosition('c', 6);
         _board.setBoardValueAtPosition('c', 7);
         _board.setBoardValueAtPosition('c', 8);
-        
-    
-        _playerOne.getPlayerDetails();
-        _playerTwo.getPlayerDetails();
+
         System.out.println("Tic Tac Toe");
         _board.displayBoard();
 
+        //Winning Conditions
+        
+
+
+        //get Player Input for Game
+
+        System.out.println("\nlet us BEGINNNNN!!!!!!!!!!!!");
+        System.out.println("1 2 3\n4 5 6\n7 8 9\nThese are the positions of each cell");
+
+        do {
+            //Player one input loop
+            System.out.println("where do "+ _playerOne.getPlayerName()+" Want to place 'X'");
+            do {
+                _playerInput = sc.nextInt();
+                if(_board.getBoardValueAtPosition(_playerInput) == 'O'|| _board.getBoardValueAtPosition(_playerInput) == 'X'){
+                    System.out.println("this Position is not valid pick another one");
+                }else{
+                    _playerOne.addtoPlayerMarkedPositionArray(_playerInput);
+
+                    _board.setBoardValueAtPosition(_playerInput,_playerOne);
+                    _board.displayBoard();
+                    
+                    _isValidInput = true;
+                } 
+            } while (_isValidInput == false);
+
+            //player two input loop
+            System.out.println("where do "+ _playerTwo.getPlayerName()+" Want to place 'O'");
+            do {
+                _playerInput = sc.nextInt();
+                if(_board.getBoardValueAtPosition(_playerInput) == 'O'|| _board.getBoardValueAtPosition(_playerInput) == 'X'){
+                    System.out.println("this Position is not valid pick another one");
+                }else{
+                    _playerTwo.addtoPlayerMarkedPositionArray(_playerInput);
+
+                    _board.setBoardValueAtPosition(_playerInput,_playerTwo);
+
+                    _board.displayBoard();
+                    
+                    _isValidInput = false;
+                } 
+            } while (_isValidInput == true);
+            
+
+        } while (!_board.checkWin('X') && !_board.checkWin('O'));
 
         sc.close();
     }
