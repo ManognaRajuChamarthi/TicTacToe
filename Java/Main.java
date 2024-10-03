@@ -109,7 +109,7 @@ class Main{
             System.out.println("Player " + _playerTwo.getPlayerName() + " Wins.");
         }
         if(_board.isFull()){
-            System.out.println("Both of you turned ot to be idiots. Want to prove me wrong Why no Play AGAIN?  ");
+            System.out.println("Both of you turned out to be idiots. Want to prove me wrong Play AGAIN?");
         }
 
         sc.close();
