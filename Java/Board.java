@@ -10,7 +10,7 @@ public class Board {
         _board = new char[9];
     }
 
-    public void setBoardValueAtPosition(char values, int index){
+    public void setInitialBoardValueAtPosition(char values, int index){
         this._board[index] = values;
     }
 

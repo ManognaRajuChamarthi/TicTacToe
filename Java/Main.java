@@ -39,15 +39,10 @@ class Main{
 
 
         //board Initialization
-        _board.setBoardValueAtPosition('c', 0);
-        _board.setBoardValueAtPosition('c', 1);
-        _board.setBoardValueAtPosition('c', 2);
-        _board.setBoardValueAtPosition('c', 3);
-        _board.setBoardValueAtPosition('c', 4);
-        _board.setBoardValueAtPosition('c', 5);
-        _board.setBoardValueAtPosition('c', 6);
-        _board.setBoardValueAtPosition('c', 7);
-        _board.setBoardValueAtPosition('c', 8);
+        for(int i=0; i<9; i++){
+            _board.setInitialBoardValueAtPosition('c', i);
+        }
+        
 
         System.out.println("Tic Tac Toe");
         _board.displayBoard();
